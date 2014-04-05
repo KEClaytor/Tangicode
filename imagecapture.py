@@ -2,7 +2,7 @@
 from cv2 import *
 
 # initialize the camera
-def take_image(cindex = 1)
+def take_image(cindex):
     cam = VideoCapture(cindex)   # 0 -> index of camera
     s, img = cam.read()
     return img
