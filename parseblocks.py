@@ -5,5 +5,7 @@
     # Translate the block image into a command
         # Store that command within the block
 
+def queue_blocks(blocks):
 # Loop through the sorted blocks
 # Add the command to our command queue
+
