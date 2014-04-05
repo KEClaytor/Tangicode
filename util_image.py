@@ -7,3 +7,6 @@ def show_image_window(img):
     imshow("cam-test",img)
     waitKey(0)
     destroyWindow("cam-test")
+
+def write_image(img, filename):
+    imwrite(filename, img)
