@@ -2,6 +2,7 @@
 
 import pygame, sys
 from pygame.locals import *
+import time
 
 greenColor = pygame.Color(0, 255, 0)
 blackColor = pygame.Color(0, 0, 0)
@@ -99,16 +100,20 @@ def run(blocks):
                 pygame.quit()
                 sys.exit()
             else:
-                block = blocks[blockidx]
-                if block.action == "left"
-                    myplayer.moveleft()
-                elif block.action == "right"
-                    myplayer.moveright()
-                elif block.action == "up"
-                    myplayer.moveup()
-                elif block.action == "down"
-                    myplayer.movedown()
-                time.sleep(2)
+                if blockidx > len(blocks):
+                    pygame.quit()
+                    sys.exit()
+                else:
+                    block = blocks[blockidx]
+                    if block.action == "left":
+                        myplayer.moveleft()
+                    elif block.action == "right":
+                        myplayer.moveright()
+                    elif block.action == "up":
+                        myplayer.moveup()
+                    elif block.action == "down":
+                        myplayer.movedown()
+                    time.sleep(1)
 
         #pygame.display.update()
         pygame.display.flip()
