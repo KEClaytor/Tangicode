@@ -63,6 +63,59 @@ def drawcapture(res):
     screen.blit(capture, (0, 0))
     return screen
 
+def run(blocks):
+    pygame.init()
+    fpsClock = pygame.time.Clock()
+
+    screen_size = (1300,700)
+    window = pygame.display.set_mode(screen_size)
+    pygame.display.set_caption('Tangicode')
+
+    sw = window.get_width()
+    sh = window.get_height()
+
+    # Display our custom grid
+    # TODO: Import a grid
+    ngrid = 5
+    grid = [[0]*ngrid]*ngrid
+    gridsize = sh/ngrid
+    background = drawgrid((sw, sh), gridsize, grid)
+    capturesurface = drawcapture((sw-sh, sh))
+    # Add the player
+    myplayer = player((2,3), gridsize, ngrid)
+    # Execute the moves
+    blockidx = 0
+    while True:
+        window.fill(blackColor)
+        # Show the grid
+        window.blit(background, (0,0))
+        # Show the player
+        window.blit(myplayer.getsurface(), myplayer.getblitcoords())
+        # Draw the captured image
+        window.blit(capturesurface, (sh, 0))
+        # Get user key presses
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            else:
+                block = blocks[blockidx]
+                if block.action == "left"
+                    myplayer.moveleft()
+                elif block.action == "right"
+                    myplayer.moveright()
+                elif block.action == "up"
+                    myplayer.moveup()
+                elif block.action == "down"
+                    myplayer.movedown()
+                time.sleep(2)
+
+        #pygame.display.update()
+        pygame.display.flip()
+        fpsClock.tick(30)
+
+    return True
+
 if __name__ == "__main__":
     pygame.init()
     fpsClock = pygame.time.Clock()
