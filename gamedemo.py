@@ -60,7 +60,8 @@ def drawgrid(res, pxh, grid):
 
 def drawcapture(res):
     screen = pygame.Surface(res)
-    capture = pygame.image.load("test.jpg").convert()
+    capture = pygame.image.load("res.png").convert()
+    capture = pygame.transform.rotate(capture, 180)
     screen.blit(capture, (0, 0))
     return screen
 
@@ -94,26 +95,37 @@ def run(blocks):
         window.blit(myplayer.getsurface(), myplayer.getblitcoords())
         # Draw the captured image
         window.blit(capturesurface, (sh, 0))
+
+        # make sure that we can see the initial frame
+        time.sleep(.5)
+
         # Get user key presses
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-            else:
-                if blockidx > len(blocks):
-                    pygame.quit()
-                    sys.exit()
-                else:
-                    block = blocks[blockidx]
-                    if block.action == "left":
-                        myplayer.moveleft()
-                    elif block.action == "right":
-                        myplayer.moveright()
-                    elif block.action == "up":
-                        myplayer.moveup()
-                    elif block.action == "down":
-                        myplayer.movedown()
-                    time.sleep(1)
+            elif event.type == KEYDOWN:
+                if event.key == K_LEFT:
+                    myplayer.moveleft()
+                elif event.key == K_RIGHT:
+                    myplayer.moveright()
+                elif event.key == K_UP:
+                    myplayer.moveup()
+                elif event.key == K_DOWN:
+                    myplayer.movedown()
+
+        if blockidx < len(blocks):
+            block = blocks[blockidx]
+            if block.action == "left":
+                myplayer.moveleft()
+            elif block.action == "right":
+                myplayer.moveright()
+            elif block.action == "up":
+                myplayer.moveup()
+            elif block.action == "down":
+                myplayer.movedown()
+            blockidx += 1
+            time.sleep(.5)
 
         #pygame.display.update()
         pygame.display.flip()

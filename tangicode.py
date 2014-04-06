@@ -10,8 +10,8 @@ if __name__ == "__main__":
 
     # Time to run
     # Get an image
-    img = ic.take_image(1)
     # (imagecapture.py)
+    img = ic.take_image(1)
     # Process the image and return our blocks
     # (processimage.py)
     blocks = proc.segment(img)
@@ -19,7 +19,6 @@ if __name__ == "__main__":
     # Translate the blocks into a program
     for block in blocks:
         print block.action
-    # (parseblocks.py)
     # Run the game
     game.run(blocks)
 
