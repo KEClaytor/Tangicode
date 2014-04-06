@@ -16,7 +16,7 @@ class player:
         self.ngrid = ngrid
         self.screen = pygame.Surface((pxh, pxh))
         self.screen.set_colorkey(greenColor)
-        playerimg = pygame.image.load("krogan.jpg").convert()
+        playerimg = pygame.image.load("programmers.jpg").convert()
         self.screen.blit(playerimg, (0, 0))
 
     def getsurface(self):
