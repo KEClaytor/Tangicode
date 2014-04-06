@@ -42,14 +42,16 @@ def segment(img):
     for template, name in patterns:
         w, h = template.shape[::-1]
         res = matchTemplate(img_gray,template,TM_CCOEFF_NORMED)
-        threshold = 0.6
+        threshold = 0.7
         loc = np.where(res >= threshold)
+        print "searching for " + name
         for pt in zip(*loc[::-1]):
             # make sure the new point is new
             # Do some weedout here
             if not in_region(pt, blockpts, w, h):
                 # Create a block object for each block
                 newblock = blk.block(pt, (w,h), None, name)
+                print "Found block: " + name
                 blocks.append(newblock)
                 blockpts.append(pt)
                 # Write out a test image

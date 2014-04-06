@@ -1,7 +1,7 @@
 # Basic block class
 def cmp_block(a, b):
-    print "(%d, %d) (%d, %d)" %(a.x, a.y, b.x, b.y)
-    print "(%d, %d) (%d, %d)" %(a.w, a.h, b.w, b.h)
+    #print "(%d, %d) (%d, %d)" %(a.x, a.y, b.x, b.y)
+    #print "(%d, %d) (%d, %d)" %(a.w, a.h, b.w, b.h)
     if a.y > b.y+b.h:
         return 1
     elif (a.y > b.y) and (a.y < b.y+b.h):

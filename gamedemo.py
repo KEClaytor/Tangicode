@@ -116,13 +116,13 @@ def run(blocks):
 
         if blockidx < len(blocks):
             block = blocks[blockidx]
-            if block.action == "left":
+            if block.action == "right":
                 myplayer.moveleft()
-            elif block.action == "right":
+            elif block.action == "left":
                 myplayer.moveright()
-            elif block.action == "up":
-                myplayer.moveup()
             elif block.action == "down":
+                myplayer.moveup()
+            elif block.action == "up":
                 myplayer.movedown()
             blockidx += 1
             time.sleep(.5)
